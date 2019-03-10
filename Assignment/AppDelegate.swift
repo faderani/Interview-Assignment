@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        initialize()
         return true
     }
 
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func initialize() {
-        initialViewController = SearchVC(nibName: "SearchVC", bundle: nil)
+        initialViewController = MainVC(nibName: "MainVC", bundle: nil)
         let nvc = UINavigationController(rootViewController: initialViewController!)
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)

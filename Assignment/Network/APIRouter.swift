@@ -14,19 +14,33 @@ enum APIRouter : URLRequestConvertible {
     
     
     case searchMovie(name : String)
+    case getPoster(size : String , path : String)
+    case getImages(id : Int)
     
     
     private var method: HTTPMethod {
         switch self {
+        
         case .searchMovie(_):
             return .get
+        case .getPoster(_,_):
+            return .get
+        case .getImages(_):
+            return .get
         }
+        
+        
     }
     
     private var path: String {
         switch self {
         case .searchMovie(_):
             return "/search/movie"
+        case .getPoster(let size, let path) :
+            return "/\(size)/\(path)"
+        
+        case .getImages(let id):
+            return "/movie/\(id)/images"
         }
         
     }
@@ -35,6 +49,8 @@ enum APIRouter : URLRequestConvertible {
         switch self {
         case .searchMovie(let name):
             return [K.APIParameterKey.query : name]
+        default :
+            return [K.APIParameterKey.apiKey: K.APIKey]
         }
     }
     
@@ -43,12 +59,28 @@ enum APIRouter : URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         var u = URLComponents(url: try K.ProductionServer.baseURL.asURL().appendingPathComponent(path), resolvingAgainstBaseURL: true)
         
+        switch self {
+        case .getPoster(_ , _):
+            u = URLComponents(url: try K.ProductionServer.baseImageURL.asURL().appendingPathComponent(path), resolvingAgainstBaseURL: true)
+        default:
+            break
+        }
+        
         var urlRequest = URLRequest(url: u!.url!)
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         // Common Headers
+        
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
+        switch self {
+        case .getImages(_):
+            urlRequest.setValue("image/jpeg", forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+            urlRequest.setValue("image/jpeg", forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        default:
+            break
+        }
         
         // Parameters
         if let parameters = parameters {

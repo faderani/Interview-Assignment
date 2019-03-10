@@ -1,5 +1,5 @@
 //
-//  SearchVC.swift
+//  ParentVC.swift
 //  Assignment
 //
 //  Created by Soroush Shahi on 3/10/19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class ParentVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-
+    
 
     /*
     // MARK: - Navigation

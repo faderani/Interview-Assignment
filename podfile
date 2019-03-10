@@ -5,6 +5,7 @@ def testing_pods
 	pod 'Alamofire'
 	pod ‘SQLite.swift’
 	pod 'AlamofireImage'
+	pod 'SwiftyJSON'
 end
 target ‘Assignment’ do
 	testing_pods

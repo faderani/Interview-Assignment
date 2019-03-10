@@ -14,12 +14,15 @@ struct K {
     
     static let APIKey = "29aa456b7e247127a10090970eea9de2"
     struct ProductionServer {
-        static let APIVersion = "2"
         static let baseURL = "https://api.themoviedb.org/3"
+        static let baseImageURL = "https://image.tmdb.org/t/p"
     }
     
     struct APIParameterKey {
         static let query = "query"
+        static let apiKey = "api_key"
+        static let filePath = "file_path"
+        static let posters = "posters"
     }
     
 }
