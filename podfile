@@ -1,0 +1,15 @@
+use_frameworks!
+platform :ios, ‘10’ 
+
+def testing_pods
+	pod 'Alamofire'
+	pod ‘SQLite.swift’
+	pod 'AlamofireImage'
+end
+target ‘Assignment’ do
+	testing_pods
+end
+
+
+
+
