@@ -29,6 +29,8 @@
 		34650E0B2235AFC600BB04B6 /* CVCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650E0A2235AFC600BB04B6 /* CVCustomFlowLayout.swift */; };
 		34650E0D2235B24500BB04B6 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650E0C2235B24500BB04B6 /* Globals.swift */; };
 		34650E122235B5D500BB04B6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650E112235B5D500BB04B6 /* Network.swift */; };
+		34E1E2EC2236E64C00431DD2 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1E2EB2236E64C00431DD2 /* Poster.swift */; };
+		34E1E2EE2236F05D00431DD2 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1E2ED2236F05C00431DD2 /* TaskQueue.swift */; };
 		AE2ADD8F43D4D2F03B71267D /* Pods_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321D4C12E06F3E2CD51F86F1 /* Pods_Assignment.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		34650E0A2235AFC600BB04B6 /* CVCustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVCustomFlowLayout.swift; sourceTree = "<group>"; };
 		34650E0C2235B24500BB04B6 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		34650E112235B5D500BB04B6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		34E1E2EB2236E64C00431DD2 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		34E1E2ED2236F05C00431DD2 /* TaskQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		70266A067425BA398F11133E /* Pods-Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-Assignment/Pods-Assignment.release.xcconfig"; sourceTree = "<group>"; };
 		8AF91692068448C6A153B47E /* Pods-Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Assignment/Pods-Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +126,8 @@
 		3443FD1E2235A1F0009161FB /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				34E1E2ED2236F05C00431DD2 /* TaskQueue.swift */,
+				34E1E2EA2236E5FC00431DD2 /* Models */,
 				34650E102235B5A500BB04B6 /* Network */,
 				34650E012235AC6C00BB04B6 /* NibLoadableView.swift */,
 				34650E0F2235B2B400BB04B6 /* Reusable */,
@@ -185,6 +191,14 @@
 				34650E112235B5D500BB04B6 /* Network.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		34E1E2EA2236E5FC00431DD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34E1E2EB2236E64C00431DD2 /* Poster.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7A4A9C96089ADA82ADE90C5F /* Pods */ = {
@@ -347,6 +361,7 @@
 			files = (
 				34650E022235AC6C00BB04B6 /* NibLoadableView.swift in Sources */,
 				34650E092235AD8600BB04B6 /* UICollectionView+Extension.swift in Sources */,
+				34E1E2EE2236F05D00431DD2 /* TaskQueue.swift in Sources */,
 				34650DF52235AA1000BB04B6 /* ParentVC.swift in Sources */,
 				34650DF82235AA1C00BB04B6 /* MainVC.swift in Sources */,
 				34650DFD2235AB9400BB04B6 /* PosterCell.swift in Sources */,
@@ -357,6 +372,7 @@
 				34650E042235ACD000BB04B6 /* ParentCell.swift in Sources */,
 				3443FD202235A1F0009161FB /* AppDelegate.swift in Sources */,
 				34650E072235AD7700BB04B6 /* UITableView+Extension.swift in Sources */,
+				34E1E2EC2236E64C00431DD2 /* Poster.swift in Sources */,
 				34650E002235AC5500BB04B6 /* ReusableView.swift in Sources */,
 				34650E122235B5D500BB04B6 /* Network.swift in Sources */,
 				3443FD402235A2B7009161FB /* Constants.swift in Sources */,

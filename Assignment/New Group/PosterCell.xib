@@ -21,7 +21,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-ge-f3Q">
                         <rect key="frame" x="0.0" y="0.0" width="98" height="93"/>
-                        <color key="backgroundColor" red="0.2483989596" green="0.58949798350000004" blue="0.35859447719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                 </subviews>
             </view>

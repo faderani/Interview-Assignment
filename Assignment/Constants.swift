@@ -37,3 +37,9 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case json = "application/json"
 }
+
+
+enum CustomError: Error {
+    case notFoundError(String)
+    case networkError(String)
+}

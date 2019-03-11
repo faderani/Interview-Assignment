@@ -57,20 +57,19 @@ enum APIRouter : URLRequestConvertible {
     
     
     func asURLRequest() throws -> URLRequest {
-        var u = URLComponents(url: try K.ProductionServer.baseURL.asURL().appendingPathComponent(path), resolvingAgainstBaseURL: true)
+        var u : URLComponents!
         
         switch self {
         case .getPoster(_ , _):
             u = URLComponents(url: try K.ProductionServer.baseImageURL.asURL().appendingPathComponent(path), resolvingAgainstBaseURL: true)
         default:
-            break
+            u = URLComponents(url: try K.ProductionServer.baseURL.asURL().appendingPathComponent(path), resolvingAgainstBaseURL: true)
         }
         
         var urlRequest = URLRequest(url: u!.url!)
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         // Common Headers
-        
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         

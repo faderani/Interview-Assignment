@@ -7,14 +7,29 @@
 //
 
 import UIKit
+import SwiftyJSON
+
 
 class PosterCell: ParentCell{
 
     @IBOutlet weak var img : UIImageView!
     
-    func configureCell (img : UIImage) {
-        self.img.image = img
+    override func configureCell () {
+        self.img.image = nil
+        let poster = Poster(id: Int.random(in: 100...1000), filePath: "")
+        
+        Operator.instance.getMoviePoster(poster: poster, completion: {
+            (image , err) in
+            if let img = image {
+                self.img.image = img
+            } else {
+                self.configureCell()
+            }
+            
+        })
     }
+    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
