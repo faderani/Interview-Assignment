@@ -1,5 +1,5 @@
 //
-//  ParentCell.swift
+//  ParentCVCell.swift
 //  Assignment
 //
 //  Created by Soroush Shahi on 3/11/19.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ParentCell: UICollectionViewCell , NibLoadableView {
+class ParentCVCell: UICollectionViewCell , NibLoadableView {
     func configureCell () {}
 }

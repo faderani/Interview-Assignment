@@ -9,11 +9,22 @@
 import UIKit
 
 class ParentVC: UIViewController {
+    
+    var tapGes: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tapGes = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGes)
         // Do any additional setup after loading the view.
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
     }
     
 

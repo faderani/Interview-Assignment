@@ -13,7 +13,7 @@ enum APIRouter : URLRequestConvertible {
     
     
     
-    case searchMovie(name : String)
+    case searchMovie(name : String , page : Int)
     case getPoster(size : String , path : String)
     case getImages(id : Int)
     
@@ -34,7 +34,7 @@ enum APIRouter : URLRequestConvertible {
     
     private var path: String {
         switch self {
-        case .searchMovie(_):
+        case .searchMovie(_ , _):
             return "/search/movie"
         case .getPoster(let size, let path) :
             return "/\(size)/\(path)"
@@ -47,8 +47,8 @@ enum APIRouter : URLRequestConvertible {
     
     private var parameters: Parameters?  {
         switch self {
-        case .searchMovie(let name):
-            return [K.APIParameterKey.query : name]
+        case .searchMovie(let name , let page):
+            return [K.APIParameterKey.query : name , K.APIParameterKey.apiKey: K.APIKey , K.APIParameterKey.page: page]
         default :
             return [K.APIParameterKey.apiKey: K.APIKey]
         }

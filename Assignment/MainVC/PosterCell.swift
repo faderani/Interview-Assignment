@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 
-class PosterCell: ParentCell{
+class PosterCell: ParentCVCell{
 
     @IBOutlet weak var img : UIImageView!
     
@@ -18,7 +18,7 @@ class PosterCell: ParentCell{
         self.img.image = nil
         let poster = Poster(id: Int.random(in: 100...1000), filePath: "")
         
-        Operator.instance.getMoviePoster(poster: poster, completion: {
+        Operator.instance.getMoviePoster(size: .small, poster: poster, completion: {
             (image , err) in
             if let img = image {
                 self.img.image = img

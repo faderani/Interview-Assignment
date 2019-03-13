@@ -11,9 +11,9 @@ import SwiftyJSON
 
 class MainVC: ParentVC {
     
-    @IBOutlet weak var collectionView : UICollectionView!
-    var timr=Timer()
-    var w:CGFloat=0.0
+    @IBOutlet weak var collectionView : AutoScrollingCV!
+    @IBOutlet weak var queryTF : CustomTF!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,57 +22,52 @@ class MainVC: ParentVC {
         collectionView.dataSource = self
         collectionView.register(PosterCell.self)
         collectionView.collectionViewLayout = CVCustomFlowLayout()
+        collectionView.configAutoscrollTimer()
         self.navigationController?.navigationBar.isHidden = true
+        
+        
+        queryTF.delegate = self
+        
+        
+        
+        
+        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configAutoscrollTimer()
+        collectionView.configAutoscrollTimer()
+        self.navigationController?.navigationBar.isHidden = true
 
     }
     
-    func configAutoscrollTimer()
-    {
-        
-        timr=Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(autoScrollView), userInfo: nil, repeats: true)
-    }
-    func deconfigAutoscrollTimer()
-    {
-        timr.invalidate()
-        
-    }
-    func onTimer()
-    {
-        autoScrollView()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.navigationController?.navigationBar.isHidden = true
+
     }
     
-    @objc func autoScrollView()
-    {
-        
-        let initailPoint = CGPoint(x: w,y :-20)
-        
-        if __CGPointEqualToPoint(initailPoint, self.collectionView.contentOffset)
-        {
-            
-            if w < collectionView.contentSize.width
-            {
-                w += 0.5
-            }
-            else
-            {
-                w = -self.view.frame.size.width
-            }
-            
-            let offsetPoint = CGPoint(x: w,y :-20)
-            
-            collectionView.contentOffset = offsetPoint
-            
-        }
-        else
-        {
-            w = collectionView.contentOffset.x
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        collectionView.deconfigAutoscrollTimer()
     }
+    
+
+
+
+    
+    @IBAction func searchBtn(_sender : UIButton) {
+        if queryTF.text == "" {
+            return
+        }
+        let vc = SearchVC(nibName : "SearchVC" , bundle : nil)
+        vc.query = queryTF.text
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
     
 
 
@@ -103,11 +98,21 @@ extension MainVC : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(PosterCell.self, indexPath: indexPath)
         cell.configureCell()
-       
+        
         
         return cell
     
     }
     
     
+}
+
+extension MainVC : UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        collectionView.superview?.blurTheView()
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        collectionView.superview?.deBlurTheView()
+
+    }
 }

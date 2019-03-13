@@ -23,6 +23,15 @@ struct K {
         static let apiKey = "api_key"
         static let filePath = "file_path"
         static let posters = "posters"
+        static let page = "page"
+        static let totalPages = "total_pages"
+        static let totalResults = "total_results"
+        static let results = "results"
+        static let id = "id"
+        static let title = "title"
+        static let overview = "overview"
+        static let releaseDate = "release_date"
+        static let posterPath = "poster_path"
     }
     
 }
@@ -42,4 +51,10 @@ enum ContentType: String {
 enum CustomError: Error {
     case notFoundError(String)
     case networkError(String)
+}
+
+
+enum PosterSize: String {
+    case small = "w185"
+    case large = "w780"
 }
