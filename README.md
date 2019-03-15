@@ -12,7 +12,7 @@
   
   *Sqlite.swift is installed but not used.
 
-- Movie posters on first screen are downloading using "the movie db" APIs as the screen scrolls automatically and they are random.
+- Movie posters on first screen are being downloaded using "the movie db" APIs as the screen scrolls automatically and they are random.
 - Unit tests for API functionality check, parsing and Userdefaults verifications are provided.
 - Because of the problem's simplicity "Userdefaults" is used for data persistency. For a more complicated occasion sqlite is prefered.
 - By looking at the project navigator (name of files and groups) you'll understand the approach which is a straight forward one and is self explained.
