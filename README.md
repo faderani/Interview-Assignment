@@ -15,7 +15,7 @@
 - Unit tests for API functionality check, parsing and Userdefaults verifications are provided.
 - Because of the problem's simplicity "Userdefaults" is used for data persistency. For a more complicated occasion sqlite is prefered.
 - By looking at the project navigator (name of files and groups) you'll understand the approach which is a straight forward one and is self explained.
-- Please be advised the API cannot be called on a regular internet connection. So as soon as you don't connect to your vpn, error alert will be shown.
+- Please be advised the API cannot be called on a regular internet connection. So as soon as you don't connect to your vpn, an error alert will be shown.
 
 
 
