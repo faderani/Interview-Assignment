@@ -19,7 +19,7 @@ class AutoScrollingCV: UICollectionView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.Label.grey
     }
     
     

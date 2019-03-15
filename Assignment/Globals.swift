@@ -7,5 +7,7 @@
 //
 
 import UIKit
+/// screen size of the device.
 let screenSize = UIScreen.main.bounds.size
+/// shortucut for api keys.
 let keys = K.APIParameterKey.self

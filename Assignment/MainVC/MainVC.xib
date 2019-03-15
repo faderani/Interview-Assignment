@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="collectionView" destination="nSJ-ni-5Lr" id="rYX-dK-tkt"/>
                 <outlet property="queryTF" destination="KXo-Ja-WO3" id="JxX-mg-qnr"/>
+                <outlet property="stackView" destination="Zdi-Vb-KxJ" id="J3f-Jp-bnP"/>
+                <outlet property="stckTopConstraint" destination="Tuq-4p-QnF" id="Xgt-s7-YAb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -82,7 +84,7 @@
                 <constraint firstItem="Zdi-Vb-KxJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="3MN-3h-yf3"/>
                 <constraint firstAttribute="trailing" secondItem="Zdi-Vb-KxJ" secondAttribute="trailing" constant="30" id="BNO-l4-NyV"/>
                 <constraint firstAttribute="bottom" secondItem="3LO-uq-uwr" secondAttribute="bottom" id="Qhp-pw-kY8"/>
-                <constraint firstItem="Zdi-Vb-KxJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="UvG-2W-j83"/>
+                <constraint firstItem="Zdi-Vb-KxJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="Tuq-4p-QnF"/>
                 <constraint firstItem="Zdi-Vb-KxJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mz8-s4-vna"/>
                 <constraint firstItem="3LO-uq-uwr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nJl-pz-dOM"/>
                 <constraint firstItem="3LO-uq-uwr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ubV-Wb-Q9J"/>

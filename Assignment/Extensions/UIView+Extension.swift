@@ -153,7 +153,7 @@ extension UIView {
     }
     
     
-    
+    /// puts a blur effect on the view.
     func blurTheView() {
         let blurredView = UIVisualEffectView()
         blurredView.frame = self.frame
@@ -170,7 +170,7 @@ extension UIView {
     }
     
     
-    
+    /// removes the applied blur effect from the view.
     func deBlurTheView () {
         for v in self.subviews {
             if v is UIVisualEffectView {

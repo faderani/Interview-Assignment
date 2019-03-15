@@ -13,9 +13,20 @@ import SwiftyJSON
 import UIKit
 
 class Network {
+    /// a tuple for requests with a json response and corresponding error(if any).
     typealias RequestResponse = (data: JSON? , error:Error?)
+    /// a tuple for requests with an image response and corresponding error(if any).
     typealias ImageResponse = (data: UIImage? , error : Error?)
 
+    
+    /**
+     makes an alamofire request with a json response.
+     
+     - Parameters:
+        - urlRequest: Desired API call.
+        - completion: A completion handler with RequestResponse input.
+    */
+    
     static func request (urlRequest : APIRouter, completion : @escaping(RequestResponse)->()) {
         Alamofire.request(urlRequest).responseJSON { (response) in
             switch response.result {
@@ -33,6 +44,14 @@ class Network {
             }
     }
     
+    
+    /**
+     makes an alamofire request with a image response.
+     
+     - Parameters:
+        - urlRequest: Desired API call.
+        - completion: A completion handler with RequestResponse input.
+     */
     static func requestImage (urlRequest : APIRouter, completion : @escaping(ImageResponse)->()) {
         Alamofire.request(urlRequest).responseImage { (response) in
             switch response.result {

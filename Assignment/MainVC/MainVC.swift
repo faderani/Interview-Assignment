@@ -8,30 +8,22 @@
 
 import UIKit
 import SwiftyJSON
+import DropDown
 
 class MainVC: ParentVC {
     
     @IBOutlet weak var collectionView : AutoScrollingCV!
     @IBOutlet weak var queryTF : CustomTF!
+    @IBOutlet weak var stackView : UIStackView!
+    
+    @IBOutlet weak var stckTopConstraint: NSLayoutConstraint!
+    
+    private let dropDown = DropDown()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PosterCell.self)
-        collectionView.collectionViewLayout = CVCustomFlowLayout()
-        collectionView.configAutoscrollTimer()
-        self.navigationController?.navigationBar.isHidden = true
-        
-        
-        queryTF.delegate = self
-        
-        
-        
-        
-        
     }
     
     
@@ -39,6 +31,7 @@ class MainVC: ParentVC {
         super.viewDidAppear(animated)
         collectionView.configAutoscrollTimer()
         self.navigationController?.navigationBar.isHidden = true
+        self.queryTF.text = ""
 
     }
     
@@ -51,13 +44,64 @@ class MainVC: ParentVC {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         collectionView.deconfigAutoscrollTimer()
+        
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            if let queries = Operator.instance.getRecentQueries() {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                if queries.count > 3 {
+                    stckTopConstraint.constant = self.view.frame.height - keyboardRectangle.height - stackView.frame.height - 20
+                    UIView.animate(withDuration: 1) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+                
+                dropDown.anchorView = stackView
+                dropDown.dataSource = queries
+                dropDown.direction = .top
+                dropDown.topOffset = CGPoint(x: 0, y:-(dropDown.anchorView?.plainView.bounds.height)!)
+                dropDown.show()
+                
+            }
+            
+        }
+    }
+    
+    
+    override func setup() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(PosterCell.self)
+        
+        collectionView.collectionViewLayout = CVCustomFlowLayout()
+        collectionView.configAutoscrollTimer()
+        self.navigationController?.navigationBar.isHidden = true
+        queryTF.delegate = self
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        dropDown.dismissMode = .automatic
+        dropDown.backgroundColor = UIColor.DropDown.orange
+        dropDown.textColor = UIColor.Label.grey
+        dropDown.cellHeight = 40
+        dropDown.textFont = UIFont(name: "HelveticaNeue-Italic", size: 15) ?? UIFont()
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.queryTF.text = item
+            self.searchBtn(_sender: nil)
+        }
+
     }
     
 
 
 
     
-    @IBAction func searchBtn(_sender : UIButton) {
+    @IBAction func searchBtn(_sender : UIButton?) {
         if queryTF.text == "" {
             return
         }
@@ -65,21 +109,6 @@ class MainVC: ParentVC {
         vc.query = queryTF.text
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -92,14 +121,12 @@ extension MainVC : UICollectionViewDelegate , UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1000
+        return 2000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(PosterCell.self, indexPath: indexPath)
         cell.configureCell()
-        
-        
         return cell
     
     }
@@ -109,10 +136,19 @@ extension MainVC : UICollectionViewDelegate , UICollectionViewDataSource {
 
 extension MainVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        collectionView.superview?.blurTheView()
+        //collectionView.superview?.blurTheView()
+        
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        collectionView.superview?.deBlurTheView()
+        //collectionView.superview?.deBlurTheView()
+        if self.stckTopConstraint.constant != 200 {
+            self.stckTopConstraint.constant = 200
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+
 
     }
 }

@@ -21,6 +21,8 @@ class CustomBtn: UIButton {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowOpacity = 0.9
+        self.backgroundColor = UIColor.Btn.green
+        self.setTitleColor(UIColor.Label.grey, for: .normal)
     }
 
     /*

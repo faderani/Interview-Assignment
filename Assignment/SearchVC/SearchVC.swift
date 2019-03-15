@@ -22,6 +22,16 @@ class SearchVC: ParentVC {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reqFirstpage()
+    }
+    
+    override func setup() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MovieCVC.self)
@@ -30,9 +40,17 @@ class SearchVC: ParentVC {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        reqNextpage()
+    func reqFirstpage () {
+        Operator.instance.parseSearchResult(name: query, page: currentPage) { (data , error) in
+            guard let res = data as? QueryResult else {return}
+            self.queryResult = res
+            self.movies += self.queryResult?.movies ?? []
+            self.collectionView.reloadData()
+            self.flag = true
+            self.currentPage += 1
+            Operator.instance.saveToSearchHistory(query: self.query)
+            
+        }
     }
     
     func reqNextpage () {
@@ -43,7 +61,6 @@ class SearchVC: ParentVC {
             self.collectionView.reloadData()
             self.flag = true
             self.currentPage += 1
-            
         }
     }
 

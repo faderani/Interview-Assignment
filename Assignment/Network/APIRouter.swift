@@ -9,18 +9,21 @@
 import Foundation
 import Alamofire
 
+
+/// Builds a request for each web service with all the necessary paramteres.
 enum APIRouter : URLRequestConvertible {
     
     
-    
+    ///returns movies found based on the query.
     case searchMovie(name : String , page : Int)
+    ///returns an image based on size and path.
     case getPoster(size : String , path : String)
+    ///returns all the image pathes from movie's id.
     case getImages(id : Int)
     
-    
+    /// method used for the request. can be GET and POST and etc... .
     private var method: HTTPMethod {
         switch self {
-        
         case .searchMovie(_):
             return .get
         case .getPoster(_,_):
@@ -32,6 +35,8 @@ enum APIRouter : URLRequestConvertible {
         
     }
     
+    
+    /// path for the request that is appended to the api production URL.
     private var path: String {
         switch self {
         case .searchMovie(_ , _):
@@ -45,6 +50,7 @@ enum APIRouter : URLRequestConvertible {
         
     }
     
+    /// request parameters
     private var parameters: Parameters?  {
         switch self {
         case .searchMovie(let name , let page):
@@ -55,7 +61,12 @@ enum APIRouter : URLRequestConvertible {
     }
     
     
-    
+    /**
+     Initializes a URLRequest based on all the paramteres and prerequisites.
+     
+     - Returns: A complete URLRequest that needs no modification.
+     - Throws: An AFError.invalidURL if self is not a valid URL string.
+     */
     func asURLRequest() throws -> URLRequest {
         var u : URLComponents!
         
@@ -106,16 +117,5 @@ enum APIRouter : URLRequestConvertible {
     }
     
     
-}
-
-extension Collection where Iterator.Element == [String:AnyObject] {
-    func toJSONString(options: JSONSerialization.WritingOptions = .prettyPrinted) -> String {
-        if let arr = self as? [[String:AnyObject]],
-            let dat = try? JSONSerialization.data(withJSONObject: arr, options: options),
-            let str = String(data: dat, encoding: String.Encoding.utf8) {
-            return str
-        }
-        return "[]"
-    }
 }
 

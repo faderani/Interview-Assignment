@@ -16,6 +16,7 @@ class ParentVC: UIViewController {
         super.viewDidLoad()
         tapGes = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGes)
+        setup()
         // Do any additional setup after loading the view.
     }
     
@@ -25,6 +26,11 @@ class ParentVC: UIViewController {
     
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
+    }
+    
+    
+    func setup () {
+        
     }
     
 

@@ -12,6 +12,10 @@ end
 target ‘Assignment’ do
 	testing_pods
 end
+target ‘AssignmentTests’ do
+	inherit! :search_paths
+	testing_pods
+end
 
 
 

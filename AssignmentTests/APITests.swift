@@ -1,18 +1,18 @@
 //
-//  AssignmentTests.swift
+//  APITests.swift
 //  AssignmentTests
 //
-//  Created by Soroush Shahi on 3/10/19.
+//  Created by Soroush Shahi on 3/15/19.
 //  Copyright © 2019 Soroush Shahi. All rights reserved.
 //
 
 import XCTest
-@testable import Assignment
 
-class AssignmentTests: XCTestCase {
+class APITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDown() {

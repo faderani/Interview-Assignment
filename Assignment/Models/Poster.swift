@@ -8,9 +8,12 @@
 
 import Foundation
 
+///  Movie's poster
 
 struct Poster {
+    /// The id of the movie.
     var id : Int
+    /// The file path of the poster.
     var filePath : String
     
 }

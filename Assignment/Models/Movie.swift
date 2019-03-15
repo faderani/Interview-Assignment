@@ -8,11 +8,17 @@
 
 import Foundation
 
+///  Movie
 struct Movie {
+    ///  the movie's id.
     var id : Int
+    /// the movie's title.
     var title : String
+    /// the movie's poster.
     var poster : Poster
+    /// the movie's overview.
     var overview : String
+    /// the movie's release date in yyyy-mm-dd format.
     var releaseDate : String
     
 }

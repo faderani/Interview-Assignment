@@ -16,6 +16,7 @@ class MovieCVC: ParentCVCell {
     @IBOutlet weak var posterHeightConstraint: NSLayoutConstraint!
     
     func configureCell(movie : Movie , indexPath : IndexPath) {
+        
         self.poster.image = nil
         _ = self.layer.sublayers?.contains(where: { (l) -> Bool in
             if l is CAGradientLayer {
@@ -47,7 +48,7 @@ class MovieCVC: ParentCVCell {
             if let img = image {
                 self.poster.image = img
             } else {
-                
+                self.poster.image = UIImage(named: "close_100")
             }
             
         })
