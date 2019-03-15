@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="collectionView" destination="nSJ-ni-5Lr" id="rYX-dK-tkt"/>
                 <outlet property="queryTF" destination="KXo-Ja-WO3" id="JxX-mg-qnr"/>
+                <outlet property="searchBtn" destination="b3S-Uq-tIv" id="fV8-09-Qkv"/>
                 <outlet property="stackView" destination="Zdi-Vb-KxJ" id="J3f-Jp-bnP"/>
                 <outlet property="stckTopConstraint" destination="Tuq-4p-QnF" id="Xgt-s7-YAb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

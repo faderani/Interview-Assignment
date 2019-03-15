@@ -11,11 +11,14 @@ import UIKit
 class SearchVC: ParentVC {
     
     @IBOutlet weak var collectionView : UICollectionView!
+    @IBOutlet weak var backBtn : UIButton!
+    
     var query : String!
     private var queryResult : QueryResult?
     private var movies : [Movie] = []
     private var currentPage = 1
     private var flag = true
+    
     
 
     override func viewDidLoad() {
@@ -39,6 +42,9 @@ class SearchVC: ParentVC {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    @IBAction func backPressed(_ sender : UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func reqFirstpage () {
         Operator.instance.parseSearchResult(name: query, page: currentPage) { (data , error) in
@@ -96,6 +102,20 @@ extension SearchVC : UICollectionViewDelegate , UICollectionViewDataSource {
             reqNextpage()
         }
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.3) {
+            self.backBtn.alpha = 0.5
+        }
+    }
+    
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        UIView.animate(withDuration: 0.3) {
+            self.backBtn.alpha = 1.0
+        }
     }
     
     

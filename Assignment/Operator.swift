@@ -64,7 +64,7 @@ class Operator {
                             movies.append(movie)
                         }
                     }
-                    if movies.count == 0 {
+                    if movies.count == 0 && page == 1 {
                         self.showAlert(message: error?.localizedDescription ?? FailMessages.noResult , type: .backward) {
                         }
                         completion((nil , CustomError.notFoundError("no result!")))
