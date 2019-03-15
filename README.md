@@ -1,7 +1,7 @@
 # Interview Assignment
 <img src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png" width="100" height="40" />
 
-## Some explainations 
+#### Some explainations 
 - Third-party libraries used:
 
   1- [Alamofire](https://github.com/Alamofire/Alamofire): Networking layer.
