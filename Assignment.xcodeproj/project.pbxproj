@@ -146,6 +146,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		34273003223C2B7F0007FD4D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				34650E012235AC6C00BB04B6 /* NibLoadableView.swift */,
+				34650DFF2235AC5500BB04B6 /* ReusableView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		3443FD132235A1F0009161FB = {
 			isa = PBXGroup;
 			children = (
@@ -169,13 +178,12 @@
 		3443FD1E2235A1F0009161FB /* Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				34273003223C2B7F0007FD4D /* Protocols */,
 				34E1E3022237084C00431DD2 /* SearchVC */,
 				34E1E3012237082300431DD2 /* MainVC */,
 				34E1E2ED2236F05C00431DD2 /* TaskQueue.swift */,
 				34E1E2EA2236E5FC00431DD2 /* Models */,
 				34650E102235B5A500BB04B6 /* Network */,
-				34650E012235AC6C00BB04B6 /* NibLoadableView.swift */,
-				34650DFF2235AC5500BB04B6 /* ReusableView.swift */,
 				34650E0F2235B2B400BB04B6 /* Reusable */,
 				34650E0C2235B24500BB04B6 /* Globals.swift */,
 				34650E052235AD5800BB04B6 /* Extensions */,
