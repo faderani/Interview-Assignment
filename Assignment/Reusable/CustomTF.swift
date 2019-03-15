@@ -21,6 +21,19 @@ class CustomTF: UITextField {
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowOpacity = 0.9
         
+        
+    }
+    
+    func clear () {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0.7
+        }
+    }
+    
+    func deClear () {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 1.0
+        }
     }
     
     

@@ -23,7 +23,19 @@ class CustomBtn: UIButton {
         self.layer.shadowOpacity = 0.9
         self.backgroundColor = UIColor.Btn.green
         self.setTitleColor(UIColor.Label.grey, for: .normal)
-        self.alpha = 0.7
+    }
+    
+    
+    func clear (alpha : CGFloat) {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = alpha
+        }
+    }
+    
+    func deClear () {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 1.0
+        }
     }
 
     /*

@@ -11,7 +11,7 @@ import UIKit
 class SearchVC: ParentVC {
     
     @IBOutlet weak var collectionView : UICollectionView!
-    @IBOutlet weak var backBtn : UIButton!
+    @IBOutlet weak var backBtn : CustomBtn!
     
     var query : String!
     private var queryResult : QueryResult?
@@ -105,17 +105,14 @@ extension SearchVC : UICollectionViewDelegate , UICollectionViewDataSource {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 0.3) {
-            self.backBtn.alpha = 0.5
-        }
+        self.backBtn.clear(alpha: 0.5)
+
     }
     
     
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        UIView.animate(withDuration: 0.3) {
-            self.backBtn.alpha = 1.0
-        }
+        self.backBtn.deClear()
     }
     
     

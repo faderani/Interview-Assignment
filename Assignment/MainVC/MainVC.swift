@@ -15,7 +15,7 @@ class MainVC: ParentVC {
     @IBOutlet weak var collectionView : AutoScrollingCV!
     @IBOutlet weak var queryTF : CustomTF!
     @IBOutlet weak var stackView : UIStackView!
-    @IBOutlet weak var searchBtn : UIButton!
+    @IBOutlet weak var searchBtn : CustomBtn!
     
     @IBOutlet weak var stckTopConstraint: NSLayoutConstraint!
     
@@ -138,18 +138,12 @@ extension MainVC : UICollectionViewDelegate , UICollectionViewDataSource {
 extension MainVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //collectionView.superview?.blurTheView()
-        UIView.animate(withDuration: 0.3) {
-            self.searchBtn.alpha = 1.0
-        }
+
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         //collectionView.superview?.deBlurTheView()
-        if textField.text == "" {
-            UIView.animate(withDuration: 0.3) {
-                self.searchBtn.alpha = 0.7
-            }
-        }
+
         
         if self.stckTopConstraint.constant != 200 {
             self.stckTopConstraint.constant = 200
