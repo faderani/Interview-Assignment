@@ -56,5 +56,6 @@ enum CustomError: Error {
 
 enum PosterSize: String {
     case small = "w185"
+    case medium = "w500"
     case large = "w780"
 }

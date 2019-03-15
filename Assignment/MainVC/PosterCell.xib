@@ -19,6 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="98" height="93"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4tl-5Q-cPQ">
+                        <rect key="frame" x="39" y="36.5" width="20" height="20"/>
+                    </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-ge-f3Q">
                         <rect key="frame" x="0.0" y="0.0" width="98" height="93"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -27,8 +30,10 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="aDI-ge-f3Q" secondAttribute="trailing" id="Cr3-Qc-IUM"/>
+                <constraint firstItem="4tl-5Q-cPQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LSA-Fk-lcM"/>
                 <constraint firstAttribute="bottom" secondItem="aDI-ge-f3Q" secondAttribute="bottom" id="Ons-76-8qN"/>
                 <constraint firstItem="aDI-ge-f3Q" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rn7-eU-YiL"/>
+                <constraint firstItem="4tl-5Q-cPQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="s9E-lf-hwB"/>
                 <constraint firstItem="aDI-ge-f3Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yVY-pN-gKI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

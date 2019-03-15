@@ -12,9 +12,11 @@ class SearchVC: ParentVC {
     
     @IBOutlet weak var collectionView : UICollectionView!
     var query : String!
-    var queryResult : QueryResult?
-    var movies : [Movie] = []
-    var currentPage = 1
+    private var queryResult : QueryResult?
+    private var movies : [Movie] = []
+    private var currentPage = 1
+    private var flag = true
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,7 @@ class SearchVC: ParentVC {
             self.queryResult = res
             self.movies += self.queryResult?.movies ?? []
             self.collectionView.reloadData()
+            self.flag = true
             self.currentPage += 1
             
         }
@@ -60,14 +63,18 @@ class SearchVC: ParentVC {
 
 extension SearchVC : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return queryResult?.movies.count ?? 0
+        
+        return movies.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(MovieCVC.self, indexPath: indexPath)
-        cell.configureCell(movie : queryResult!.movies[indexPath.row] , indexPath : indexPath)
+        cell.configureCell(movie : movies[indexPath.row] , indexPath : indexPath)
         
-        if indexPath.row == queryResult?.movies.count ?? 0 - 1 && currentPage != queryResult?.totalPages {
+        
+        if indexPath.row + 1 == (queryResult?.movies.count ?? 0) && currentPage + 1 != queryResult?.totalPages {
+            flag = false
             reqNextpage()
         }
         return cell

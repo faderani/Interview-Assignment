@@ -40,12 +40,9 @@ class MovieCVC: ParentCVCell {
             gradient.endPoint = CGPoint(x: 0.5, y: 1)
             self.layer.insertSublayer(gradient, at: 0)
         }
-        if Int(String(movie.releaseDate.split(separator: "-").first!)) == 1992 {
-            print(indexPath.row)
-        }
         overviewLbl.text = movie.overview
         titleLbl.text = movie.title + " " + "(\(movie.releaseDate.split(separator: "-").first ?? ""))"
-        Operator.instance.getMoviePoster(size: .large, poster: movie.poster, completion: {
+        Operator.instance.getMoviePoster(size: .medium, poster: movie.poster, completion: {
             (image , err) in
             if let img = image {
                 self.poster.image = img
