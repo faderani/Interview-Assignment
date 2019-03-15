@@ -13,7 +13,7 @@ import Foundation
 struct QueryResult {
     /// movies found from the user's query.
     var movies : [Movie]
-    /// page of current result. each page has a maxmum of 20 movies.
+    /// page of current result. each page has a maximum of 20 movies.
     var page : Int
     /// total number of pages from user's query.
     var totalPages : Int

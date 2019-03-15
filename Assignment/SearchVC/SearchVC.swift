@@ -43,6 +43,7 @@ class SearchVC: ParentVC {
     func reqFirstpage () {
         Operator.instance.parseSearchResult(name: query, page: currentPage) { (data , error) in
             guard let res = data as? QueryResult else {return}
+            
             self.queryResult = res
             self.movies += self.queryResult?.movies ?? []
             self.collectionView.reloadData()

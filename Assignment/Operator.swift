@@ -13,6 +13,9 @@ import SwiftyJSON
 class Operator {
     static let instance = Operator()
     
+    var defaults = UserDefaults.standard
+
+    
     typealias ParserResponse = (data: Any? , error : Error?)
     typealias ImageResponse = (data: UIImage? , error : Error?)
 
@@ -117,7 +120,6 @@ extension Operator {
     /// - Parameters:
     ///     - query: user's searched text.
     func saveToSearchHistory (query : String!) {
-        let defaults = UserDefaults.standard
         if var array = defaults.stringArray(forKey: UserDefaultsKeys.queries) {
             if array.count == 10 {
                 array.remove(at: 9)
