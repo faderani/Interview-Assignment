@@ -8,7 +8,7 @@
   
   2- [DropDown](https://github.com/AssistoLab/DropDown): Drop Down menu for search history.
   
-  3-[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON): Dealing with JSON responses.
+  3- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON): Dealing with JSON responses.
   *Sqlite.swift is installed but not used.
 
 - Movie posters on first screen are downloading using "the movie db" APIs as the screen scrolls automatically and they are random.
